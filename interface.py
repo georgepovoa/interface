@@ -3,7 +3,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 driver = webdriver.Chrome()
-driver.get("https://www.google.com/search?q={}+site%3Aqconcursos.com&client=opera-gx&hs=CMn&sxsrf=AOaemvIBcmNuKRLNV6jMC7oP7KB7tEmSaA%3A1635740820972&ei=lGx_YdDSOvPe1sQP_pmiwAk&oq=Q1837108+s&gs_lcp=Cgdnd3Mtd2l6EAMYADIECCMQJzoKCCMQrgIQsAMQJ0oECEEYAVCcF1jcHWCLKGgBcAB4AIABd4gBzwKSAQMwLjOYAQCgAQHIAQHAAQE&sclient=gws-wiz")
+driver.get("https://www.qconcursos.com/conta/entrar")
+driver.find_element_by_id("login_email").send_keys("george_povoa@hotmail.com")
+driver.find_element_by_id("login_password").send_keys("asdasd12")
+driver.find_element_by_name("commit").click()
+driver.find_element_by_tag_name('body').send_keys(Keys.CONTROL + 't') 
 
 def selenium_search(id,driver):
    
@@ -657,10 +661,10 @@ while True:
 
         texto_resultado = bot_procurar (e.get(),dfart,dfniv2,dfniv3,dfniv4)
         
-        label_result = Label(text=texto_resultado, wraplength=800)
+        label_result = Label(text=procura_texto(df_lei, texto_resultado), wraplength=800)
         label_result.grid(column=0, row=100, columnspan=5)
 
-        btn_pesquisa = Button(text = "Salvar",command= salvar_btn_func(texto_resultado,df_resultado))
+        btn_pesquisa = Button(text = "Salvar",command=lambda:salvar_btn_func(texto_resultado,df_resultado))
 
         btn_pesquisa.grid(column=6, row=100, columnspan=5)
 
